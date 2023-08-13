@@ -37,14 +37,15 @@ const Nav = () => {
         />
       </div>
 
-      <div className="-mt-3 lg:block hidden">
+
+      <Link href={"/cart"} className="-mt-3 lg:block hidden">
         <div className=" bg-slate-100 absolute h-10 w-10 rounded-full justify-center">
           <div className="bg-red-500 h-5 w-5 relative -right-6 -top-1 rounded-full text-white flex justify-center items-center">
             3
           </div>
           <ShoppingCart className="relative m-auto -mt-2" />
         </div>
-      </div>
+      </Link>
 
      {/* Mobile responsive */}
                 <div className='lg:hidden justify-self-end'>
