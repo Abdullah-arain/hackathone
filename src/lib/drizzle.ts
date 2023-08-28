@@ -11,9 +11,7 @@ export const cartTable= pgTable("hackathon", {
     image: varchar("image", {
         length: 255
     }).notNull(),
-    price: varchar("price", {
-        length: 255
-    }).notNull(),
+    price: integer("price").notNull(),
     product_name: varchar("product_name", {
         length: 255
     }).notNull(),

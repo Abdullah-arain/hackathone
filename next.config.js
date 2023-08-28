@@ -11,6 +11,9 @@ const nextConfig = {
       ],
       domains: ["cdn.sanity.io"],
     },
+    headers: {
+      'My-Header': 'My-Value',
+    },
   };
   
   module.exports = nextConfig;

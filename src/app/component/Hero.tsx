@@ -11,7 +11,7 @@ import { ShoppingCart } from "lucide-react";
 
 export default function Hero() {
   return (
-    <div className='wrapper flex lg:mx-auto md:mx-10 mx-3'>
+    <div className='flex lg:mx-auto md:mx-10 mx-3'>
         {/* left section */}
       <section className='flex-1 mt-20'>
       <Badge className='bg-blue-100 rounded-[5px] text-blue-700 py-1 px-4 text-lg'>Sale 70%</Badge>

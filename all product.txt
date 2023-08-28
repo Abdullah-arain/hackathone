@@ -26,3 +26,26 @@ const FetchQuery = async () => {
 
 export default FetchQuery;
 
+
+
+
+
+CREATE TABLE IF NOT EXISTS hackathon (
+    id SERIAL PRIMARY KEY NOT NULL,
+    user_id varchar(255) NOT NULL,
+    product_id varchar(255) NOT NULL,
+    product_name varchar(255) NOT NULL,
+    price varchar(255) NOT NULL,
+    quantity int NOT NULL,
+    image varchar(255) NOT NULL
+)
+
+ALTER TABLE hackathon
+ADD CONSTRAINT UNIQUENESS UNIQUE (
+        product_name
+)
+
+SELECT SUM(price) AS total_product_price
+FROM hackathon;
+
+

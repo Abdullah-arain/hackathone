@@ -9,7 +9,7 @@ import Fotter from "./Fotter";
 const Footer = () => {
   return (
     <main>
-    <div className="wrapper lg:mx-auto md:mx-10 mx-3 gap-y-6 my-28 ml-5 flex lg:flex-row flex-col">
+    <div className="lg:mx-auto md:mx-10 mx-3 gap-y-6 my-28 ml-5 flex lg:flex-row flex-col">
       <section className="flex flex-col flex-1 mr-20">
         
         <div>

@@ -13,10 +13,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import Clerk from "./Clerk";
 
-const Nav = () => {
+const Nav = async() => {
+
   return (
-    <div className="wrapper lg:mx-auto md:mx-10 mx-3 flex gap-16 py-[40px] justify-between">
+    <div className="lg:mx-auto md:mx-10 mx-3 flex gap-16 py-[40px] justify-between">
       <a href="/"><Image src={logo} alt="Logo" className="h-auto" /></a>
 
       <div className="lg:block hidden">
@@ -41,7 +43,7 @@ const Nav = () => {
       <Link href={"/cart"} className="-mt-3 lg:block hidden">
         <div className=" bg-slate-100 absolute h-10 w-10 rounded-full justify-center">
           <div className="bg-red-500 h-5 w-5 relative -right-6 -top-1 rounded-full text-white flex justify-center items-center">
-            3
+            2
           </div>
           <ShoppingCart className="relative m-auto -mt-2" />
         </div>
@@ -55,19 +57,21 @@ const Nav = () => {
                         </SheetTrigger>
                         <SheetContent >
                           
-                            <div className=" bg-slate-100 absolute h-10 w-10 rounded-full justify-center mt-10">
+
+                            <a href={"/cart"} className=" bg-slate-100 absolute h-10 w-10 rounded-full justify-center mt-10">
                               <div className="bg-red-500 h-5 w-5 relative -right-6 -top-1 rounded-full text-white flex justify-center items-center">
-                                3
+                                5
                               </div>
                               <ShoppingCart className="relative m-auto -mt-2" />
-                            </div>
-
+                            </a>
                             <ul className='flex flex-col gap-y-3 text-xl mt-10 bg-white'>
-                                <li className='text-center'><Link href={"/"}>Female</Link></li>
-                                <li className='text-center'><Link href={"/"}>Male</Link></li>
-                                <li className='text-center'><Link href={"/"}>Kids</Link></li>
+                                <li className='text-center'><Link href={"/female"}>Female</Link></li>
+                                <li className='text-center'><Link href={"/male"}>Male</Link></li>
+                                <li className='text-center'><Link href={"/kids"}>Kids</Link></li>
                                 <li className='text-center'><Link href={"/all_product"}>All Products</Link></li>
                             </ul>
+                            <Clerk/>
+
                         </SheetContent>
                     </Sheet>
 

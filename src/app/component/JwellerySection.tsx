@@ -2,7 +2,7 @@ import Image from "next/image"
 
 const Jewellery = () => {
     return (
-        <div className="wrapper lg:mx-auto md:mx-10 mx-3 mt-20 px-1 text-gray-700">
+        <div className="lg:mx-auto md:mx-10 mx-3 mt-20 px-1 text-gray-700">
 
             {/* top */}
             <div className="flex justify-start md:justify-end text-4xl md:text-5xl font-bold py-4 ">

@@ -3,7 +3,7 @@ import React from "react";
 export default function Fotter() {
   return (
     <div className="border-t-2">
-      <div className="lg:mx-auto md:mx-10 mx-3 mb-5 flex justify-center wrapper">
+      <div className="lg:mx-auto md:mx-10 mx-3 mb-5 flex justify-center">
         <div className="flex-1 md:block hidden">
           <p className="mt-5 md:text-lg text-md">
             Copyright © 2022 Dine market

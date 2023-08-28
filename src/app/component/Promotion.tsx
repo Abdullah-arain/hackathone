@@ -9,13 +9,22 @@ import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Link from "next/link";
 
-const Client = () => {
-  const [data, setData] = useState([]);
+const Client = async() => {
 
-  useEffect(() => {
-    FetchData().then(setData);
-  }, []);
+  const breakpoints = {
+    300: {
+      slidesPerView: 1,
+    },
+    576: {
+      slidesPerView: 2,
+    },
+    1000: {
+      slidesPerView: 3,
+    },
+  };
 
+  
+const data: any = await FetchData()
   return (
     <div className="">
       <h3 className="text-center text-blue-600 font-bold text-md mt-32">
@@ -25,18 +34,17 @@ const Client = () => {
         Check What We Have
       </h2>
       
-    <section className="wrapper lg:mx-auto md:mx-10 mx-3 flex md:flex-row flex-col justify-center gap-y-5">
+    <section className="mx-5">
         <Swiper
-         spaceBetween={50}
+         spaceBetween={20}
          slidesPerView={3}
-         onSlideChange={() => console.log('slide change')}
-         onSwiper={(swiper) => console.log(swiper)}
+         breakpoints={breakpoints}
        >
     
       {data.map((product:any) => (
-         <SwiperSlide key={product.slug}>
-          <Link href={`/product/${product.slug.current}`} className="hover:scale-105 transition duration-700 ease-in-out">
-        <Image src={urlForImage(product.image[0]).url()} alt="" width={500} height={500} className="max-h-[300px] object-cover object-center"/>
+         <SwiperSlide key={product.slug} className="hover:scale-105 transition duration-700 ease-in-out">
+          <Link href={`/product/${product.slug.current}`}>
+        <Image src={urlForImage(product.image[0]).url()} alt="" width={500} height={500} className="max-h-[300px] object-cover object-top"/>
         <h6 className="text-gray-800 mt-4 text-xl font-semibold">{product.productName}</h6>
         <span className="block font-semibold text-xl text-gray-800">$ {product.price}</span>
         </Link>
