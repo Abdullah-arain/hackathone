@@ -8,7 +8,7 @@ const FetchQuery = async () => {
   const data = await FetchData();
 
   return (
-    <div className="lg:mx-auto md:mx-10 mx-3 grid md:grid-cols-[repeat(3,auto)] grid-cols-[repeat(2,auto)] justify-center gap-x-5 md:gap-x-28 gap-y-10 mt-10">
+    <div className="grid grid-cols-1 bs:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20 place-items-center px-10">
       {data.map((product: any) => (
         <div key={product.slug}>
           <Link
@@ -16,7 +16,7 @@ const FetchQuery = async () => {
             className=""
             key={product.slug}
           >
-            <Image src={urlForImage(product.image[0]).url()} alt="" width={500} height={500} className="max-h-[400px] object-cover object-top"/>
+            <Image src={urlForImage(product.image[0]).url()} alt="" width={500} height={500} className="max-h-[300px] object-cover object-top"/>
             <div className="text-xl font-bold mt-3">{product.productName}</div>
             <div className="text-blue-700 font-semibold">
               {product.productTypes}

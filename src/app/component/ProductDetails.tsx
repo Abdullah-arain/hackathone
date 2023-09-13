@@ -37,11 +37,14 @@ export default function ProductDetails({
           quantity: quantity,
         }),
       });
-      toast.success('Added Successfully')
     } catch (error) {
       console.log("error", error);
     }
   }
+
+  const handleToast = () => {
+    toast.success("Successfully Added!");
+  };
 
   return (
     
@@ -69,11 +72,11 @@ export default function ProductDetails({
         </main>
 
       <section className="flex mt-12 gap-4">
-      <button onClick={handleAddToCart} className="bg-blue-700 text-white rounded-sm px-5 py-2 active:bg-blue-600">Add to Cart</button>
+      <button onClick={()=>{handleAddToCart(),handleToast()}} className="bg-blue-700 text-white rounded-sm px-5 py-2 active:bg-blue-600">Add to Cart</button>
       <div className="text-2xl font-bold">$ {filteredData.price}</div>
       </section>
     </section>
   </div>
+  <Toaster/>
       </div>
   )}
-

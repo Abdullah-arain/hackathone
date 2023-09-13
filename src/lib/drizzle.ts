@@ -22,6 +22,6 @@ export const cartTable= pgTable("hackathon", {
 })
 
 export type cart = InferModel<typeof cartTable>;
-export type NewTodo = InferModel<typeof cartTable,"insert">;
+// export type NewCart = InferModel<typeof cartTable,"insert">;
 
 export const db = drizzle(sql)

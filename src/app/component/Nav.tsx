@@ -30,16 +30,16 @@ const Nav = async() => {
         </ul>
       </div>
 
-      <div className="border-[1px] py-1 gap-2 rounded lg:flex hidden">
+      <div className="border-[1px] py-1 gap-2 rounded items-center lg:flex hidden">
         <Search className="w-4 h-4 font-sm ml-2" />
         <input
           type="text"
           placeholder="What are you looking for"
-          className="text-xs pr-28"
+          className="text-xs pr-10"
         />
       </div>
 
-
+<Clerk/> 
       <Link href={"/cart"} className="-mt-3 lg:block hidden">
         <div className=" bg-slate-100 absolute h-10 w-10 rounded-full justify-center">
           <div className="bg-red-500 h-5 w-5 relative -right-6 -top-1 rounded-full text-white flex justify-center items-center">

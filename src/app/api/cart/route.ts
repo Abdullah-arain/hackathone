@@ -49,7 +49,7 @@ export async function DELETE(request: NextRequest){
   try {
     const res = await db.delete(cartTable).where(
       and(
-        eq(cartTable.user_id , req.user_id),
+        // eq(cartTable.user_id , req.user_id),
         eq(cartTable.product_name, req.product_name)
       )
     ).returning()

@@ -6,12 +6,11 @@ import { Button } from "@/components/ui/button";
 
 export default function Clerk() {
   const { isSignedIn } = useAuth();
-  console.log(isSignedIn);
   return (
     <div className="flex flex-col items-end ml-auto">
       {!isSignedIn && 
       (<SignInButton>
-      <Button>
+      <Button className="bg-blue-400 text-white">
         SignIn
       </Button>
       </SignInButton>)}

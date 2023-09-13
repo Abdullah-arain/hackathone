@@ -3,8 +3,13 @@ import { Trash2 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useAuth } from "@clerk/nextjs";
-import { toast } from "react-hot-toast";
+import toast, { Toaster } from 'react-hot-toast';
+import getStipePromise from "@/lib/stripe";
 
+const BASE_URL =
+  process.env.NODE_ENV == "development"
+    ? "http://localhost:3000"
+    : "https://hackathone-abdullaharain1309-gmailcom.vercel.app/";
 
 export default function Cartitem() {
 
@@ -14,7 +19,7 @@ export default function Cartitem() {
 
     useEffect(() => {
         fetch(
-            `https://hackathone-abdullaharain1309-gmailcom.vercel.app/api/cart?user_id=${userId}`
+            `${BASE_URL}/api/cart?user_id=${userId}`
             ).then((res)=>res.json()).then((data)=>setProducts(data));      
     }, [isSignedIn, state, userId])
   
@@ -29,9 +34,27 @@ async function deleteProduct(product_name: any){
     method: 'DELETE',
     body: JSON.stringify({user_id: userId, product_name: product_name})
   })
-  toast.success("Cart deleted successfully")
   setState(!state)
 }
+  
+const handleToast = () => {
+    toast.success("Successfully Deleted!");
+  };
+  
+  const handleCheckout = async () => {
+    const stripe = await getStipePromise();
+    const response = await fetch("/api/stripe/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      cache: "no-cache",
+      body: JSON.stringify(products),
+    });
+
+    const data = await response.json();
+    if (data.session) {
+      stripe?.redirectToCheckout({ sessionId: data.session.id });
+    }
+  };
   
   return (
     <div className="mt-20">
@@ -50,7 +73,7 @@ async function deleteProduct(product_name: any){
                <h1 className="text-xl font-bold text-gray-900 mt-2">$ {item.price}</h1>
                </div>
                <div className="mt-2 flex flex-col justify-between items-end ml-auto">
-                 <button onClick={()=>deleteProduct(item.product_name)}><Trash2 /></button>
+                 <button onClick={()=>{deleteProduct(item.product_name),handleToast()}}><Trash2 /></button>
                <h1 className="text-xl font-medium text-gray-800">Quantity: {item.quantity}</h1>
                </div>
                </section>
@@ -67,7 +90,7 @@ async function deleteProduct(product_name: any){
              <h1>SubTotal: </h1>
              <h1 className="">$ {totalPrice}</h1>
            </div>
-           <button className="py-1 px-3 bg-black text-white rounded-[6px] mt-4 ">Process to Checkout</button>
+           <button className="py-1 px-3 bg-black text-white rounded-[6px] my-4 hover:bg-gray-800" onClick={handleCheckout}>Process to Checkout</button>
          </div>
          </section>
       ) : (
@@ -75,7 +98,7 @@ async function deleteProduct(product_name: any){
       )
       }     
       
-      
+      <Toaster/>
     </div>
   );
 }

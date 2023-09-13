@@ -5,7 +5,7 @@ import './globals.css'
 import Nav from './component/Nav'
 import { Raleway } from 'next/font/google'
 import Footer from './component/Footer'
-import Providers from './component/shopping icon/Provider'
+import ReduxProvider from './component/redux_layout/Provider'
 import { ClerkProvider } from '@clerk/nextjs'
 import Clerk from './component/Clerk'
 
@@ -31,7 +31,6 @@ export default function RootLayout({
     <html lang="en">
       <body className='wrapper mx-auto'>
         <Nav/>
-        <Clerk/>
         {children}
         <Footer/>
         </body>
